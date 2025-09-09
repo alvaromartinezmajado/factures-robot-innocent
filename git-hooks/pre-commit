@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+echo "Running pre-commit hook: Dumping database..."
+
+# Run the dump script
+./scripts/dump-database.sh
+
+# Add the dump file to the commit
+git add database/dump.sql
+
+echo "Pre-commit hook finished."

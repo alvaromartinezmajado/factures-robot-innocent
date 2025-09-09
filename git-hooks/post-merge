@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+echo "Running post-merge hook: Restoring database..."
+
+# Run the restore script
+./scripts/restore-database.sh
+
+echo "Post-merge hook finished."
