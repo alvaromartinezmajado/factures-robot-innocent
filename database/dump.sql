@@ -508,7 +508,7 @@ CREATE TABLE `ip_invoice_items` (
   `item_date` date DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `invoice_id` (`invoice_id`,`item_tax_rate_id`,`item_date_added`,`item_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=725 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=726 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -611,7 +611,8 @@ INSERT INTO `ip_invoice_items` VALUES
 (721,499,14,NULL,'2025-08-07',NULL,'Cooper: AWS','Configuración y troubleshooting de AWS Elastic Beanstalk para entornos de Cooper y webs del cliente.\n\nReuniones técnicas en varias ocasiones con Francisco Garde sobre operaciones en AWS (creación y gestión de instancias, RDS, migraciones de sqlite a MySQL, problemas de permisos y escalabilidad).\n\nExplicaciones por escrito sobre múltiples detalles técnicos como las  desired instances en AWS autoscaling (proporciono el comando, justificación técnica y procedimientos recomendados).\n\nSoporte en incidencias con permisos: Identificación de la jerarquía de cuentas en AWS Organizations, explicación del acceso restringido, coordinación para escalar incidencias a Garaje de Ideas (cuenta padre).\n\nGestión de certificados SSL y DNS en AWS Route 53: diagnóstico de delegaciones de zona, comunicación de problemas por permisos, creación de registros necesarios.\n\nDespliegue y troubleshooting de entornos blue/green en Elastic Beanstalk, y asistencia en la resolución de problemas con deploys automáticos (github actions + AWS CLI).\n\nIdentificación de setup y modificación autoscaling vs. single instance en contextos donde Bolt almacena assets localmente y riesgo de pérdida de datos con múltiples instancias.\n\nPreparación de scripts y automatizaciones para migraciones, gestión de desired-capacity y otros ajustes de infraestructura.\n\nDocumentación y explicación de procedimientos a compañeros/as con menor conocimiento de AWS.',28.00,50.00,NULL,1,NULL,NULL,NULL,NULL),
 (722,500,14,NULL,'2025-09-11',NULL,'Cooper y Multiasistencia','Desarrollo en el script para adaptar allergodil.cz a MySQL, configuración de DNS en Route53, estimaciones de desarollo sobre Bolt, desarrollo e implementación de pipelines CI/CD con Jenkins, paso de pipelines a Jenkins Configuration as code, configuración de docker-compose y resolución de problemas técnicos en docker-compose, introducción de SonarQube en la docker network, documentación de arquitectura.\n\nCantidad y precio según lo acordado en el contrato fechado en Madrid a 31 de julio, con nombre de archivo en el envío por email que empieza por 20250722-ContratoServicios-Proveedor-RobotInnocent.',92.00,25.00,NULL,1,NULL,NULL,NULL,NULL),
 (723,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',3.00,750.00,NULL,1,NULL,NULL,NULL,NULL),
-(724,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',1.00,150.00,NULL,2,NULL,NULL,NULL,NULL);
+(724,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',1.00,150.00,NULL,2,NULL,NULL,NULL,NULL),
+(725,502,14,NULL,'2025-09-30',NULL,'Consultoria i desenvolupament informàtic','Serveis de consultoria i desenvolupament informàtic per al Projecte Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPeríode: del 9 al 30 de setembre de 2025 (ambdós inclosos).\n\nDedicació: 37,5 hores setmanals segons acord contractual.\n\nCàlcul: 14 dies laborables × 7,5 hores/dia = 105 hores totals.\n\nS\'han exclòs del càlcul els caps de setmana i els festius oficials de Barcelona: la diada nacional de Catalunya (11 de setembre) i la mare de déu de la mercè (24 de setembre).\n\nTarifa contractual: 45,00 € per hora de servei prestat (IVA no inclòs).',105.00,45.00,NULL,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `ip_invoice_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1682,4 +1683,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-01 14:11:17
+-- Dump completed on 2025-10-01 14:11:49
