@@ -1,2 +1,9 @@
 vendor/
 mysql/
+# Database backups
+mysql_backup*/
+database_backup*/
+
+# Database backups
+mysql_backup*/
+database_backup*/
