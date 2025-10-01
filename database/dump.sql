@@ -133,7 +133,7 @@ INSERT INTO `ip_clients` VALUES
 (98,'1970-01-01 00:00:00','1970-01-01 00:00:00','Playbrand SL','/ Pic de Peguera, 11 17003 de Girona','VAT: B55250922','Girona','Girona','17003','Spain','',NULL,NULL,'','','B55250922','B55250922','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (99,'1970-01-01 00:00:00','4404-08-07 17:41:42','Premier Recruitment International','Lapps Quay','VAT: IE4726096A','Cork','','','','',NULL,NULL,'','','IE4726096A','IE4726096A','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (100,'2025-08-07 21:13:21','2025-08-07 21:24:52','Garaje de Ideas SL','Calle Magallanes, 25, 2ª planta','B86426780','Madrid','','28015','ES','','','','','','B86426780','','system',1,'',NULL,NULL,NULL,'0000-00-00',0),
-(101,'2025-10-01 12:20:06','2025-10-01 12:44:57','Robot Innocent SL','Carrer de Solà, 25, baixos',NULL,'Barcelona','Catalunya','08014','España',NULL,NULL,NULL,NULL,NULL,NULL,'B66856089','system',1,NULL,NULL,NULL,NULL,NULL,0);
+(101,'2025-10-01 12:20:06','2025-10-01 12:44:57','Robot Innocent SL','Carrer de Solà, 25, baixos','AUTO-UNASSISTED-1759326911','Barcelona','Catalunya','08014','España',NULL,NULL,NULL,NULL,NULL,NULL,'B66856089','system',1,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `ip_clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1681,4 +1681,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-01 13:17:54
+-- Dump completed on 2025-10-01 13:55:12
