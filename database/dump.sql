@@ -316,7 +316,7 @@ CREATE TABLE `ip_invoice_amounts` (
   PRIMARY KEY (`invoice_amount_id`),
   KEY `invoice_id` (`invoice_id`),
   KEY `invoice_paid` (`invoice_paid`,`invoice_balance`)
-) ENGINE=MyISAM AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=503 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,7 +390,8 @@ INSERT INTO `ip_invoice_amounts` VALUES
 (496,496,'1',3840.00,0.00,0.00,3840.00,3840.00,0.00),
 (499,499,'1',1400.00,294.00,0.00,1694.00,0.00,1694.00),
 (500,500,'1',2300.00,483.00,483.00,2783.00,0.00,2783.00),
-(501,501,'1',2400.00,472.50,472.50,2872.50,0.00,2872.50);
+(501,501,'1',2400.00,472.50,472.50,2872.50,0.00,2872.50),
+(502,502,'1',4725.00,992.25,992.25,5717.25,0.00,5717.25);
 /*!40000 ALTER TABLE `ip_invoice_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1683,4 +1684,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-01 14:11:49
+-- Dump completed on 2025-10-01 14:12:21
