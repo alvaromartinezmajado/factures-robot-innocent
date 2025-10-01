@@ -132,8 +132,7 @@ INSERT INTO `ip_clients` VALUES
 (97,'1970-01-01 00:00:00','2025-10-01 12:46:40','Crític SCCL','Casp 43, baixos.','08010 Barcelona - VAT: F66334806','Barcelona','Catalonia','08010','Spain','',NULL,NULL,'','','F66334806','F66334806','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (98,'1970-01-01 00:00:00','1970-01-01 00:00:00','Playbrand SL','/ Pic de Peguera, 11 17003 de Girona','VAT: B55250922','Girona','Girona','17003','Spain','',NULL,NULL,'','','B55250922','B55250922','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (99,'1970-01-01 00:00:00','4404-08-07 17:41:42','Premier Recruitment International','Lapps Quay','VAT: IE4726096A','Cork','','','','',NULL,NULL,'','','IE4726096A','IE4726096A','system',1,NULL,NULL,NULL,NULL,NULL,0),
-(100,'2025-08-07 21:13:21','2025-08-07 21:24:52','Garaje de Ideas SL','Calle Magallanes, 25, 2ª planta','B86426780','Madrid','','28015','ES','','','','','','B86426780','','system',1,'',NULL,NULL,NULL,'0000-00-00',0),
-(101,'2025-10-01 12:20:06','2025-10-01 12:44:57','Robot Innocent SL','Carrer de Solà, 25, baixos',NULL,'Barcelona','Catalunya','08014','España',NULL,NULL,NULL,NULL,NULL,NULL,'B66856089','system',1,NULL,NULL,NULL,NULL,NULL,0);
+(100,'2025-08-07 21:13:21','2025-08-07 21:24:52','Garaje de Ideas SL','Calle Magallanes, 25, 2ª planta','B86426780','Madrid','','28015','ES','','','','','','B86426780','','system',1,'',NULL,NULL,NULL,'0000-00-00',0);
 /*!40000 ALTER TABLE `ip_clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,7 +390,7 @@ INSERT INTO `ip_invoice_amounts` VALUES
 (499,499,'1',1400.00,294.00,0.00,1694.00,0.00,1694.00),
 (500,500,'1',2300.00,483.00,483.00,2783.00,0.00,2783.00),
 (501,501,'1',2400.00,472.50,472.50,2872.50,0.00,2872.50),
-(502,502,'1',4725.00,992.25,992.25,5717.25,0.00,5717.25);
+(502,502,'1',4725.00,992.25,0.00,5717.25,0.00,5717.25);
 /*!40000 ALTER TABLE `ip_invoice_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +468,7 @@ CREATE TABLE `ip_invoice_item_amounts` (
   `item_total` decimal(20,2) DEFAULT NULL,
   PRIMARY KEY (`item_amount_id`),
   KEY `item_id` (`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,7 +478,8 @@ CREATE TABLE `ip_invoice_item_amounts` (
 LOCK TABLES `ip_invoice_item_amounts` WRITE;
 /*!40000 ALTER TABLE `ip_invoice_item_amounts` DISABLE KEYS */;
 INSERT INTO `ip_invoice_item_amounts` VALUES
-(1,721,1400.00,294.00,0.00,1694.00);
+(1,721,1400.00,294.00,0.00,1694.00),
+(2,725,4725.00,992.25,0.00,5717.25);
 /*!40000 ALTER TABLE `ip_invoice_item_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -613,7 +613,7 @@ INSERT INTO `ip_invoice_items` VALUES
 (722,500,14,NULL,'2025-09-11',NULL,'Cooper y Multiasistencia','Desarrollo en el script para adaptar allergodil.cz a MySQL, configuración de DNS en Route53, estimaciones de desarollo sobre Bolt, desarrollo e implementación de pipelines CI/CD con Jenkins, paso de pipelines a Jenkins Configuration as code, configuración de docker-compose y resolución de problemas técnicos en docker-compose, introducción de SonarQube en la docker network, documentación de arquitectura.\n\nCantidad y precio según lo acordado en el contrato fechado en Madrid a 31 de julio, con nombre de archivo en el envío por email que empieza por 20250722-ContratoServicios-Proveedor-RobotInnocent.',92.00,25.00,NULL,1,NULL,NULL,NULL,NULL),
 (723,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',3.00,750.00,NULL,1,NULL,NULL,NULL,NULL),
 (724,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',1.00,150.00,NULL,2,NULL,NULL,NULL,NULL),
-(725,502,14,NULL,'2025-09-30',NULL,'Consultoria i desenvolupament informàtic','Serveis de consultoria i desenvolupament informàtic per al Projecte Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPeríode: del 9 al 30 de setembre de 2025 (ambdós inclosos).\n\nDedicació: 37,5 hores setmanals segons acord contractual.\n\nCàlcul: 14 dies laborables × 7,5 hores/dia = 105 hores totals.\n\nS\'han exclòs del càlcul els caps de setmana i els festius oficials de Barcelona: la diada nacional de Catalunya (11 de setembre) i la mare de déu de la mercè (24 de setembre).\n\nTarifa contractual: 45,00 € per hora de servei prestat (IVA no inclòs).',105.00,45.00,NULL,1,NULL,NULL,NULL,NULL);
+(725,502,14,NULL,'2025-09-30',NULL,'Consultoria i desenvolupament informàtic','Serveis de consultoria i desenvolupament informàtic per al Projecte Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPeríode: del 9 al 30 de setembre de 2025 (ambdós inclosos).\n\n\nS\'han exclòs del càlcul d\'hores els festius oficials de Barcelona ocorreguts durant el període: la Diada Nacional de Catalunya (11 de setembre) i la Mare de Déu de la Mercè (24 de setembre).',105.00,45.00,NULL,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `ip_invoice_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -810,7 +810,7 @@ INSERT INTO `ip_invoices` VALUES
 (499,1,100,5,2,NULL,'','2025-08-07','21:25:03','2025-08-07 21:44:06','2025-08-22','SERI-00001',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC 	BBVA:SM\nISIN Code 	ES0113211835\nSWIFT Code 	BBVAESMMXXX\nGIIN Number 	8DGQ38.00000.LE.724 \nLEI Code 	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','BUXFsAp9RQa1fmbnEGzLSeig6DCjv2l5',0,NULL),
 (500,1,100,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:20:59','2025-09-26','SERI-00002',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey002ABCDEFGH123456789012',0,NULL),
 (501,1,97,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:22:05','2025-09-26','SERI-00003',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey003ABCDEFGH123456789013',0,NULL),
-(502,1,92,5,3,NULL,NULL,'2025-09-30','00:00:00','2025-10-01 14:11:00','2025-10-30','SERI-00004',NULL,NULL,'Serveis de consultoria informàtica contractats segons l\'acord del 7 de setembre de 2025.\n\nProjecte: Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPagament mitjançant transferència bancària al compte corrent núm. ES16 0182 1005 3802 0167 6646 al cap de trenta dies de la data de la factura.\n\nL\'IEC paga els proveïdors el dia 10 de cada mes.','uniquekey004ABCDEFGH123456789014',0,NULL);
+(502,1,92,5,3,NULL,'','2025-09-30','00:00:00','2025-10-01 14:51:29','2025-10-30','SERI-00004',0.00,0.00,'Serveis de consultoria informàtica contractats segons l\'acord del 7 de setembre de 2025.\n\nProjecte: Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPagament mitjançant transferència bancària al compte corrent núm. ES16 0182 1005 3802 0167 6646 al cap de trenta dies de la data de la factura.\n\nL\'IEC paga els proveïdors el dia 10 de cada mes.','uniquekey004ABCDEFGH123456789014',0,NULL);
 /*!40000 ALTER TABLE `ip_invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1684,4 +1684,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-01 14:48:00
+-- Dump completed on 2025-10-01 14:51:32
