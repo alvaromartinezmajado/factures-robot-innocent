@@ -110,7 +110,7 @@ CREATE TABLE `ip_clients` (
   `client_gender` int(1) DEFAULT 0,
   PRIMARY KEY (`client_id`),
   KEY `client_active` (`client_active`)
-) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,8 @@ INSERT INTO `ip_clients` VALUES
 (97,'1970-01-01 00:00:00','1261-08-07 17:51:53','Crític SCCL','Casp 43, baixos.','08010 Barcelona - VAT: F66334806','Barcelona','Catalonia','08010','Spain','',NULL,NULL,'','','F66334806',NULL,'system',1,NULL,NULL,NULL,NULL,NULL,0),
 (98,'1970-01-01 00:00:00','1970-01-01 00:00:00','Playbrand SL','/ Pic de Peguera, 11 17003 de Girona','VAT: B55250922','Girona','Girona','17003','Spain','',NULL,NULL,'','','B55250922',NULL,'system',1,NULL,NULL,NULL,NULL,NULL,0),
 (99,'1970-01-01 00:00:00','4404-08-07 17:41:42','Premier Recruitment International','Lapps Quay','VAT: IE4726096A','Cork','','','','',NULL,NULL,'','','IE4726096A',NULL,'system',1,NULL,NULL,NULL,NULL,NULL,0),
-(100,'2025-08-07 21:13:21','2025-08-07 21:24:52','Garaje de Ideas SL','Calle Magallanes, 25, 2ª planta','B86426780','Madrid','','28015','ES','','','','','','B86426780','','system',1,'',NULL,NULL,NULL,'0000-00-00',0);
+(100,'2025-08-07 21:13:21','2025-08-07 21:24:52','Garaje de Ideas SL','Calle Magallanes, 25, 2ª planta','B86426780','Madrid','','28015','ES','','','','','','B86426780','','system',1,'',NULL,NULL,NULL,'0000-00-00',0),
+(101,'2025-10-01 12:20:06','2025-10-01 12:20:06','Robot Innocent SL','Carrer de Solà, 25, baixos',NULL,'Barcelona','Catalunya','08014','España',NULL,NULL,NULL,NULL,NULL,NULL,'B66856089','system',1,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `ip_clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +315,7 @@ CREATE TABLE `ip_invoice_amounts` (
   PRIMARY KEY (`invoice_amount_id`),
   KEY `invoice_id` (`invoice_id`),
   KEY `invoice_paid` (`invoice_paid`,`invoice_balance`)
-) ENGINE=MyISAM AUTO_INCREMENT=500 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +387,9 @@ INSERT INTO `ip_invoice_amounts` VALUES
 (494,494,'1',10080.00,0.00,0.00,10080.00,10080.00,0.00),
 (495,495,'1',10560.00,0.00,0.00,10560.00,10560.00,0.00),
 (496,496,'1',3840.00,0.00,0.00,3840.00,3840.00,0.00),
-(499,499,'1',1400.00,294.00,0.00,1694.00,0.00,1694.00);
+(499,499,'1',1400.00,294.00,0.00,1694.00,0.00,1694.00),
+(500,500,'1',2300.00,483.00,483.00,2783.00,0.00,2783.00),
+(501,501,'1',2400.00,472.50,472.50,2872.50,0.00,2872.50);
 /*!40000 ALTER TABLE `ip_invoice_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -504,7 +507,7 @@ CREATE TABLE `ip_invoice_items` (
   `item_date` date DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `invoice_id` (`invoice_id`,`item_tax_rate_id`,`item_date_added`,`item_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=722 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=725 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -604,7 +607,10 @@ INSERT INTO `ip_invoice_items` VALUES
 (718,494,0,NULL,'2025-08-07',NULL,'Cloud Dataplane Project','Services provided for period 1/02/2024 to 29/02/2024',157.50,64.00,NULL,1,NULL,NULL,NULL,NULL),
 (719,495,0,NULL,'2025-08-07',NULL,'Cloud Dataplane Project','Services provided for period 1/10/2024 to 31/10/2024',165.00,64.00,NULL,1,NULL,NULL,NULL,NULL),
 (720,496,0,NULL,'2025-08-07',NULL,'Cloud Dataplane Project','Services provided for period 22/01/2024 to 31/01/2024',60.00,64.00,NULL,1,NULL,NULL,NULL,NULL),
-(721,499,14,NULL,'2025-08-07',NULL,'Cooper: AWS','Configuración y troubleshooting de AWS Elastic Beanstalk para entornos de Cooper y webs del cliente.\n\nReuniones técnicas en varias ocasiones con Francisco Garde sobre operaciones en AWS (creación y gestión de instancias, RDS, migraciones de sqlite a MySQL, problemas de permisos y escalabilidad).\n\nExplicaciones por escrito sobre múltiples detalles técnicos como las  desired instances en AWS autoscaling (proporciono el comando, justificación técnica y procedimientos recomendados).\n\nSoporte en incidencias con permisos: Identificación de la jerarquía de cuentas en AWS Organizations, explicación del acceso restringido, coordinación para escalar incidencias a Garaje de Ideas (cuenta padre).\n\nGestión de certificados SSL y DNS en AWS Route 53: diagnóstico de delegaciones de zona, comunicación de problemas por permisos, creación de registros necesarios.\n\nDespliegue y troubleshooting de entornos blue/green en Elastic Beanstalk, y asistencia en la resolución de problemas con deploys automáticos (github actions + AWS CLI).\n\nIdentificación de setup y modificación autoscaling vs. single instance en contextos donde Bolt almacena assets localmente y riesgo de pérdida de datos con múltiples instancias.\n\nPreparación de scripts y automatizaciones para migraciones, gestión de desired-capacity y otros ajustes de infraestructura.\n\nDocumentación y explicación de procedimientos a compañeros/as con menor conocimiento de AWS.',28.00,50.00,NULL,1,NULL,NULL,NULL,NULL);
+(721,499,14,NULL,'2025-08-07',NULL,'Cooper: AWS','Configuración y troubleshooting de AWS Elastic Beanstalk para entornos de Cooper y webs del cliente.\n\nReuniones técnicas en varias ocasiones con Francisco Garde sobre operaciones en AWS (creación y gestión de instancias, RDS, migraciones de sqlite a MySQL, problemas de permisos y escalabilidad).\n\nExplicaciones por escrito sobre múltiples detalles técnicos como las  desired instances en AWS autoscaling (proporciono el comando, justificación técnica y procedimientos recomendados).\n\nSoporte en incidencias con permisos: Identificación de la jerarquía de cuentas en AWS Organizations, explicación del acceso restringido, coordinación para escalar incidencias a Garaje de Ideas (cuenta padre).\n\nGestión de certificados SSL y DNS en AWS Route 53: diagnóstico de delegaciones de zona, comunicación de problemas por permisos, creación de registros necesarios.\n\nDespliegue y troubleshooting de entornos blue/green en Elastic Beanstalk, y asistencia en la resolución de problemas con deploys automáticos (github actions + AWS CLI).\n\nIdentificación de setup y modificación autoscaling vs. single instance en contextos donde Bolt almacena assets localmente y riesgo de pérdida de datos con múltiples instancias.\n\nPreparación de scripts y automatizaciones para migraciones, gestión de desired-capacity y otros ajustes de infraestructura.\n\nDocumentación y explicación de procedimientos a compañeros/as con menor conocimiento de AWS.',28.00,50.00,NULL,1,NULL,NULL,NULL,NULL),
+(722,500,14,NULL,'2025-09-11',NULL,'Cooper y Multiasistencia','Desarrollo en el script para adaptar allergodil.cz a MySQL, configuración de DNS en Route53, estimaciones de desarollo sobre Bolt, desarrollo e implementación de pipelines CI/CD con Jenkins, paso de pipelines a Jenkins Configuration as code, configuración de docker-compose y resolución de problemas técnicos en docker-compose, introducción de SonarQube en la docker network, documentación de arquitectura.\n\nCantidad y precio según lo acordado en el contrato fechado en Madrid a 31 de julio, con nombre de archivo en el envío por email que empieza por 20250722-ContratoServicios-Proveedor-RobotInnocent.',92.00,25.00,NULL,1,NULL,NULL,NULL,NULL),
+(723,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',3.00,750.00,NULL,1,NULL,NULL,NULL,NULL),
+(724,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',1.00,150.00,NULL,2,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `ip_invoice_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -726,7 +732,7 @@ CREATE TABLE `ip_invoices` (
   UNIQUE KEY `invoice_url_key` (`invoice_url_key`),
   KEY `user_id` (`user_id`,`client_id`,`invoice_group_id`,`invoice_date_created`,`invoice_date_due`,`invoice_number`),
   KEY `invoice_status_id` (`invoice_status_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=500 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -798,7 +804,9 @@ INSERT INTO `ip_invoices` VALUES
 (494,1,99,1,4,NULL,NULL,'2024-02-29','00:00:00','1970-01-01 00:00:00','2025-09-06','2024-2',NULL,NULL,'<p>Operación sujeta a IVA con inversión del sujeto pasivo a realizar por el destinatario de los servicios, conforme al artículo 84, apartado 1, punto 2º, de la Ley 37/1992.</p>\n<p>Bank account name: Robot Innocent SL</p>\n<p>IBAN: ES1601821005380201676646</p>','59ebc1fabc5822e0279864510446e9fb',0,NULL),
 (495,1,99,1,4,NULL,NULL,'2024-11-06','00:00:00','1970-01-01 00:00:00','2025-09-06','2024-10',NULL,NULL,'<p>Operación sujeta a IVA con inversión del sujeto pasivo a realizar por el destinatario de los servicios, conforme al artículo 84, apartado 1, punto 2º, de la Ley 37/1992.</p>\n<p>Bank account name: Robot Innocent SL</p>\n<p>IBAN: ES1601821005380201676646</p>','356841505df7e23adea7f5033aa5e2d4',0,NULL),
 (496,1,99,1,4,NULL,NULL,'2024-02-06','00:00:00','1970-01-01 00:00:00','2025-09-06','2024-1',NULL,NULL,'<p>Operación sujeta a IVA con inversión del sujeto pasivo a realizar por el destinatario de los servicios, conforme al artículo 84, apartado 1, punto 2º, de la Ley 37/1992.</p>\n<p>Bank account name: Robot Innocent SL</p>\n<p>IBAN: ES1601821005380201676646</p>','65677c8102d085d7dc5ec6185cf53d3c',0,NULL),
-(499,1,100,5,2,NULL,'','2025-08-07','21:25:03','2025-08-07 21:44:06','2025-08-22','SERI-00001',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC 	BBVA:SM\nISIN Code 	ES0113211835\nSWIFT Code 	BBVAESMMXXX\nGIIN Number 	8DGQ38.00000.LE.724 \nLEI Code 	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','BUXFsAp9RQa1fmbnEGzLSeig6DCjv2l5',0,NULL);
+(499,1,100,5,2,NULL,'','2025-08-07','21:25:03','2025-08-07 21:44:06','2025-08-22','SERI-00001',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC 	BBVA:SM\nISIN Code 	ES0113211835\nSWIFT Code 	BBVAESMMXXX\nGIIN Number 	8DGQ38.00000.LE.724 \nLEI Code 	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','BUXFsAp9RQa1fmbnEGzLSeig6DCjv2l5',0,NULL),
+(500,1,101,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:20:59','2025-09-26','SERI-00002',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey002ABCDEFGH123456789012',0,NULL),
+(501,1,101,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:22:05','2025-09-26','SERI-00003',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey003ABCDEFGH123456789013',0,NULL);
 /*!40000 ALTER TABLE `ip_invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1672,4 +1680,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-09  9:07:07
+-- Dump completed on 2025-10-01 12:23:22
