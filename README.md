@@ -297,6 +297,206 @@ This system was migrated from Invoice Ninja v5.11.79 with complete data integrit
 
 ---
 
+## Tax Display System (Impuesto de Valor Añadido)
+
+### How It Works
+
+The system automatically displays "Impuesto de Valor Añadido (21%)" on all invoices through a dynamic tax calculation system implemented across all PDF templates.
+
+### Template Architecture
+
+**Template Locations:**
+```
+application/views/invoice_templates/pdf/
+├── InvoicePlane.php              # Default invoice template
+├── InvoicePlane - overdue.php    # Used for overdue invoices
+└── InvoicePlane - paid.php       # Used for paid invoices
+
+application/views/quote_templates/pdf/
+└── InvoicePlane.php              # Quote template
+```
+
+**Template Selection Logic:**
+- **Overdue invoices**: Automatically uses `InvoicePlane - overdue.php`
+- **Paid invoices**: Automatically uses `InvoicePlane - paid.php`
+- **Regular invoices**: Uses default `InvoicePlane.php`
+
+### Tax Calculation Implementation
+
+Each template contains the following tax calculation logic:
+
+```php
+// Show aggregated tax totals by tax rate (Spanish compliance)
+if ($invoice->invoice_item_tax_total > 0) {
+    // Calculate tax totals by tax rate
+    $CI = &get_instance();
+    $CI->load->model('tax_rates/mdl_tax_rates');
+
+    $tax_totals = array();
+    foreach ($items as $item) {
+        if ($item->item_tax_rate_id > 0) {
+            $tax_rate = $CI->mdl_tax_rates->get_by_id($item->item_tax_rate_id);
+            if ($tax_rate) {
+                $item_total = $item->item_quantity * $item->item_price;
+                $tax_amount = $item_total * ($tax_rate->tax_rate_percent / 100);
+
+                if (!isset($tax_totals[$item->item_tax_rate_id])) {
+                    $tax_totals[$item->item_tax_rate_id] = array(
+                        'name' => $tax_rate->tax_rate_name,
+                        'percent' => $tax_rate->tax_rate_percent,
+                        'amount' => 0
+                    );
+                }
+                $tax_totals[$item->item_tax_rate_id]['amount'] += $tax_amount;
+            }
+        }
+    }
+
+    // Display each tax with its name from the database
+    foreach ($tax_totals as $tax_total) {
+        echo $tax_total['name'] . ' (' . $tax_total['percent'] . '%)';
+        echo format_currency($tax_total['amount']);
+    }
+}
+```
+
+### Why This Works
+
+1. **Database-Driven**: The tax name "Impuesto de Valor Añadido" is stored in the `ip_tax_rates` table (ID: 14, Rate: 21%)
+2. **Dynamic Calculation**: The system calculates taxes based on items that have `item_tax_rate_id = 14`
+3. **Template Coverage**: The same logic is replicated across all templates (regular, overdue, paid)
+4. **Automatic Display**: When any item has the Spanish VAT tax rate assigned, it automatically shows "Impuesto de Valor Añadido (21%)" with the calculated amount
+
+### Database Structure
+
+```sql
+-- Tax rate definition
+ip_tax_rates:
+  tax_rate_id: 14
+  tax_rate_name: "Impuesto de Valor Añadido"
+  tax_rate_percent: 21.00
+
+-- Item tax assignment
+ip_invoice_items:
+  item_tax_rate_id: 14  -- Links to Spanish VAT
+```
+
+### Result
+
+All PDFs will display:
+- **Subtotal**: Base amount without tax
+- **Impuesto de Valor Añadido (21%)**: Calculated 21% VAT amount
+- **Total**: Final amount including tax
+
+This ensures Spanish tax compliance across all invoice states and templates.
+
+## The Great Invoice Debugging Saga (October 2025)
+
+### The Crisis
+
+On October 2, 2025, we received an urgent email from Joan Vila at Crític SCCL about invoice SERI-00003:
+
+> "me n'he adonat que en la factura presentada de cara al PERTE (l'adjunto) hi ha un error menor: en la primera línia de les quantitats intermèdies. Diu Cant: 3, Precio: 750 € i aplica malament la multiplicació: 3 x 750 € ha de ser 2.250 € i no pas 2.722,50 €"
+
+The client was submitting this invoice for a PERTE government subsidy audit and was worried the "mathematical error" would cause rejection.
+
+### The Investigation
+
+**Initial Discovery:**
+- File examined: `regression/concepte-Factura_SERI-00003.pdf`
+- Line item showed: 3 × 750€ = 2,722.50€ (appeared wrong)
+- But 2,722.50€ was actually 2,250€ + 21% VAT = 2,722.50€
+- The column was labeled "Total" and was showing VAT-inclusive amounts
+
+**The Plot Thickens:**
+After fixing line items to show subtotals, the "Impuesto de Valor Añadido" line completely disappeared from PDFs! Investigation revealed:
+1. Invoice was overdue, using `InvoicePlane - overdue.php` template
+2. Tax calculation logic existed in main template but was missing from overdue/paid variants
+3. Database had wrong tax total: 472.50€ instead of 504€
+
+### The Root Causes
+
+**Problem 1: Inconsistent Tax Calculation**
+- First item (3×750€): 21% VAT = 472.50€ ✓
+- Second item (1×150€): 21% VAT = 31.50€ ✓
+- But invoice only showed 472.50€ total VAT (missing the 31.50€!)
+
+**Problem 2: Database Integrity Issues**
+- 91 invoice items had NULL amounts in `ip_invoice_item_amounts`
+- Invoice totals weren't recalculating after fixes
+- InvoicePlane's `calculate()` method wasn't being triggered
+
+**Problem 3: Template Inconsistencies**
+- Main template had sophisticated tax aggregation logic
+- Overdue and paid templates were missing this logic
+- Line items showed "Total" (with VAT) instead of subtotal
+
+### The Fixes Applied
+
+1. **Database Corrections:**
+   ```sql
+   -- Fixed SERI-00003 totals
+   UPDATE ip_invoice_amounts
+   SET invoice_item_tax_total = 504.00,
+       invoice_total = 2904.00
+   WHERE invoice_id = 501;
+   ```
+
+2. **Template Changes:**
+   - Extended tax calculation logic to all templates
+   - Changed line items from `$item->item_total` to `$item->item_subtotal`
+   - Removed ambiguous "Total" header from line items column
+
+3. **Files Modified:**
+   - `application/views/invoice_templates/pdf/InvoicePlane.php`
+   - `application/views/invoice_templates/pdf/InvoicePlane - overdue.php`
+   - `application/views/invoice_templates/pdf/InvoicePlane - paid.php`
+   - `application/views/quote_templates/pdf/InvoicePlane.php`
+
+### The Results
+
+**Before (regression/concepte-Factura_SERI-00003.pdf):**
+- Line 1: 3 × 750€ = 2,722.50€ (confusing - includes VAT)
+- Line 2: 1 × 150€ = 150€ (inconsistent - no VAT shown)
+- VAT: 472.50€ (wrong - missing 31.50€)
+- Total: 2,872.50€ (wrong)
+
+**After (regression/Factura_SERI-00003-rectificada2.pdf):**
+- Line 1: 3 × 750€ = 2,250.00€ (clear - subtotal only)
+- Line 2: 1 × 150€ = 150.00€ (consistent - subtotal only)
+- VAT: 504.00€ (correct - includes all items)
+- Total: 2,904.00€ (correct)
+
+**Client Impact:** Crític SCCL must pay additional 31.50€ (difference between 2,904€ and 2,872.50€)
+
+### Other Invoices Checked
+
+**SERI-00001 (regression/Factura_SERI-00001.pdf):**
+- 28 hours × 50€/hour = 1,400€ + 21% = 1,694€ ✓ Correct
+
+**SERI-00002 (regression/Factura_SERI-00002.pdf):**
+- 92 hours × 25€/hour = 2,300€ + 21% = 2,783€ ✓ Correct
+
+**SERI-00004 (regression/Factura_SERI-00004.pdf):**
+- 105 hours × 45€/hour = 4,725€ + 21% = 5,717.25€ ✓ Correct
+
+### Lessons Learned
+
+1. **The "Total" Column Confusion:** Spanish invoicing convention expects Quantity × Price to equal the amount shown, not the VAT-inclusive total
+2. **Template Consistency:** All invoice states (regular, overdue, paid) must have identical calculation logic
+3. **Database Integrity:** Direct database updates require triggering InvoicePlane's recalculation methods
+4. **Client Communication:** What clients see as "wrong multiplication" might be correct math with unclear presentation
+
+### Final State
+
+- All templates now show line item subtotals (without VAT)
+- Tax calculations are consistent across all invoice states
+- The ambiguous "Total" header has been removed from line items
+- Database totals have been corrected
+- Spanish invoice compliance is maintained
+
+---
+
 **System Status**: ✅ Fully operational with automatic database synchronization
 
 For detailed auto-sync technical documentation, see [AUTO-SYNC-README.md](AUTO-SYNC-README.md).

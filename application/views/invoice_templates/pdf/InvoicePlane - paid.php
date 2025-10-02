@@ -135,7 +135,7 @@
             <?php if ($show_item_discounts) : ?>
                 <th class="item-discount text-right"><?php _trans('discount'); ?></th>
             <?php endif; ?>
-            <th class="item-total text-right"><?php _trans('total'); ?></th>
+            <th class="item-total text-right"></th>
         </tr>
         </thead>
         <tbody>
@@ -161,7 +161,7 @@
                     </td>
                 <?php endif; ?>
                 <td class="text-right">
-                    <?php echo format_currency($item->item_total); ?>
+                    <?php echo format_currency($item->item_subtotal); ?>
                 </td>
             </tr>
         <?php } ?>
@@ -176,16 +176,47 @@
             <td class="text-right"><?php echo format_currency($invoice->invoice_item_subtotal); ?></td>
         </tr>
 
-        <?php if ($invoice->invoice_item_tax_total > 0) { ?>
+        <?php
+        // Show aggregated tax totals by tax rate (Spanish compliance)
+        if ($invoice->invoice_item_tax_total > 0) {
+            // Calculate tax totals by tax rate
+            $CI = &get_instance();
+            $CI->load->model('tax_rates/mdl_tax_rates');
+
+            $tax_totals = array();
+            foreach ($items as $item) {
+                if ($item->item_tax_rate_id > 0) {
+                    $tax_rate = $CI->mdl_tax_rates->get_by_id($item->item_tax_rate_id);
+                    if ($tax_rate) {
+                        $item_total = $item->item_quantity * $item->item_price;
+                        $tax_amount = $item_total * ($tax_rate->tax_rate_percent / 100);
+
+                        if (!isset($tax_totals[$item->item_tax_rate_id])) {
+                            $tax_totals[$item->item_tax_rate_id] = array(
+                                'name' => $tax_rate->tax_rate_name,
+                                'percent' => $tax_rate->tax_rate_percent,
+                                'amount' => 0
+                            );
+                        }
+                        $tax_totals[$item->item_tax_rate_id]['amount'] += $tax_amount;
+                    }
+                }
+            }
+
+            // Show each tax total with specific name
+            foreach ($tax_totals as $tax_total) {
+        ?>
             <tr>
                 <td <?php echo($show_item_discounts ? 'colspan="5"' : 'colspan="4"'); ?> class="text-right">
-                    <?php _trans('item_tax'); ?>
+                    <?php echo htmlsc($tax_total['name']) . ' (' . format_amount($tax_total['percent']) . '%)'; ?>
                 </td>
                 <td class="text-right">
-                    <?php echo format_currency($invoice->invoice_item_tax_total); ?>
+                    <?php echo format_currency($tax_total['amount']); ?>
                 </td>
             </tr>
-        <?php } ?>
+        <?php
+            }
+        } ?>
 
         <?php foreach ($invoice_tax_rates as $invoice_tax_rate) : ?>
             <tr>

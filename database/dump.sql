@@ -1,7 +1,6 @@
-/*M!999999\- enable the sandbox mode */ 
--- MariaDB dump 10.19  Distrib 10.11.11-MariaDB, for Linux (aarch64)
+-- MariaDB dump 10.19  Distrib 10.9.8-MariaDB, for debian-linux-gnu (aarch64)
 --
--- Host: invoiceplane-db    Database: invoiceplane_db
+-- Host: localhost    Database: invoiceplane_db
 -- ------------------------------------------------------
 -- Server version	10.9.8-MariaDB-1:10.9.8+maria~ubu2204
 
@@ -30,7 +29,7 @@ USE `invoiceplane_db`;
 
 DROP TABLE IF EXISTS `ip_client_custom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_client_custom` (
   `client_custom_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
@@ -56,7 +55,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_client_notes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_client_notes` (
   `client_note_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
@@ -82,7 +81,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_clients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_clients` (
   `client_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_date_created` datetime NOT NULL,
@@ -142,7 +141,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_custom_fields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_custom_fields` (
   `custom_field_id` int(11) NOT NULL AUTO_INCREMENT,
   `custom_field_table` varchar(50) DEFAULT NULL,
@@ -173,7 +172,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_custom_values`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_custom_values` (
   `custom_values_id` int(11) NOT NULL AUTO_INCREMENT,
   `custom_values_field` int(11) NOT NULL,
@@ -197,7 +196,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_email_templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_email_templates` (
   `email_template_id` int(11) NOT NULL AUTO_INCREMENT,
   `email_template_title` text DEFAULT NULL,
@@ -228,7 +227,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_families`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_families` (
   `family_id` int(11) NOT NULL AUTO_INCREMENT,
   `family_name` text DEFAULT NULL,
@@ -251,7 +250,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_import_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_import_details` (
   `import_detail_id` int(11) NOT NULL AUTO_INCREMENT,
   `import_id` int(11) NOT NULL,
@@ -278,7 +277,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_imports`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_imports` (
   `import_id` int(11) NOT NULL AUTO_INCREMENT,
   `import_date` datetime NOT NULL,
@@ -301,7 +300,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_amounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_amounts` (
   `invoice_amount_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -401,7 +400,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_custom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_custom` (
   `invoice_custom_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -427,7 +426,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_groups` (
   `invoice_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_group_name` text DEFAULT NULL,
@@ -459,7 +458,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_item_amounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_item_amounts` (
   `item_amount_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
@@ -584,7 +583,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_items` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -719,7 +718,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_sumex`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_sumex` (
   `sumex_id` int(11) NOT NULL AUTO_INCREMENT,
   `sumex_invoice` int(11) NOT NULL,
@@ -749,7 +748,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoice_tax_rates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoice_tax_rates` (
   `invoice_tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -807,7 +806,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoices` (
   `invoice_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -917,7 +916,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_invoices_recurring`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_invoices_recurring` (
   `invoice_recurring_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -945,7 +944,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_item_lookups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_item_lookups` (
   `item_lookup_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_name` varchar(100) NOT NULL DEFAULT '',
@@ -970,7 +969,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_login_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_login_log` (
   `login_name` varchar(100) NOT NULL,
   `log_count` int(11) DEFAULT 0,
@@ -994,7 +993,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_merchant_responses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_merchant_responses` (
   `merchant_response_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -1024,7 +1023,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_payment_custom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_payment_custom` (
   `payment_custom_id` int(11) NOT NULL AUTO_INCREMENT,
   `payment_id` int(11) NOT NULL,
@@ -1050,7 +1049,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_payment_methods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_payment_methods` (
   `payment_method_id` int(11) NOT NULL AUTO_INCREMENT,
   `payment_method_name` text DEFAULT NULL,
@@ -1076,7 +1075,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_payments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL,
@@ -1106,7 +1105,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_products` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `family_id` int(11) DEFAULT NULL,
@@ -1164,7 +1163,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_projects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_projects` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
@@ -1188,7 +1187,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quote_amounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quote_amounts` (
   `quote_amount_id` int(11) NOT NULL AUTO_INCREMENT,
   `quote_id` int(11) NOT NULL,
@@ -1216,7 +1215,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quote_custom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quote_custom` (
   `quote_custom_id` int(11) NOT NULL AUTO_INCREMENT,
   `quote_id` int(11) NOT NULL,
@@ -1242,7 +1241,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quote_item_amounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quote_item_amounts` (
   `item_amount_id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
@@ -1270,7 +1269,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quote_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quote_items` (
   `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `quote_id` int(11) NOT NULL,
@@ -1306,7 +1305,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quote_tax_rates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quote_tax_rates` (
   `quote_tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,
   `quote_id` int(11) NOT NULL,
@@ -1334,7 +1333,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_quotes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_quotes` (
   `quote_id` int(11) NOT NULL AUTO_INCREMENT,
   `invoice_id` int(11) NOT NULL DEFAULT 0,
@@ -1373,7 +1372,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_sessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
@@ -1398,7 +1397,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_settings` (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_key` varchar(50) NOT NULL,
@@ -1500,7 +1499,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_tasks` (
   `task_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NOT NULL,
@@ -1529,7 +1528,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_tax_rates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_tax_rates` (
   `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,
   `tax_rate_name` text DEFAULT NULL,
@@ -1556,7 +1555,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_units` (
   `unit_id` int(11) NOT NULL AUTO_INCREMENT,
   `unit_name` varchar(50) DEFAULT NULL,
@@ -1580,7 +1579,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_uploads`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_uploads` (
   `upload_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
@@ -1607,7 +1606,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_user_clients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_user_clients` (
   `user_client_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -1632,7 +1631,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_user_custom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_user_custom` (
   `user_custom_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -1658,7 +1657,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_type` int(1) NOT NULL DEFAULT 0,
@@ -1710,7 +1709,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ip_versions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ip_versions` (
   `version_id` int(11) NOT NULL AUTO_INCREMENT,
   `version_date_applied` varchar(14) NOT NULL,
@@ -1781,4 +1780,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-02 18:11:42
+-- Dump completed on 2025-10-02 18:13:07

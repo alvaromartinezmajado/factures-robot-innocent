@@ -132,7 +132,7 @@
             <?php if ($show_item_discounts) : ?>
                 <th class="item-discount text-right"><?php _trans('discount'); ?></th>
             <?php endif; ?>
-            <th class="item-total text-right"><?php _trans('total'); ?></th>
+            <th class="item-total text-right"></th>
         </tr>
         </thead>
         <tbody>
@@ -158,7 +158,7 @@
                     </td>
                 <?php endif; ?>
                 <td class="text-right">
-                    <?php echo format_currency($item->item_total); ?>
+                    <?php echo format_currency($item->item_subtotal); ?>
                 </td>
             </tr>
         <?php } ?>
