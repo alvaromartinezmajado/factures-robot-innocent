@@ -315,7 +315,7 @@ CREATE TABLE `ip_invoice_amounts` (
   PRIMARY KEY (`invoice_amount_id`),
   KEY `invoice_id` (`invoice_id`),
   KEY `invoice_paid` (`invoice_paid`,`invoice_balance`)
-) ENGINE=MyISAM AUTO_INCREMENT=503 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,7 +390,8 @@ INSERT INTO `ip_invoice_amounts` VALUES
 (499,499,'1',1400.00,294.00,294.00,1694.00,0.00,1694.00),
 (500,500,'1',2300.00,483.00,483.00,2783.00,0.00,2783.00),
 (501,501,'1',2400.00,504.00,504.00,2904.00,0.00,2904.00),
-(502,502,'1',4725.00,992.25,0.00,5717.25,0.00,5717.25);
+(502,502,'1',4725.00,992.25,0.00,5717.25,0.00,5717.25),
+(503,503,'1',2300.00,483.00,0.00,2783.00,0.00,2783.00);
 /*!40000 ALTER TABLE `ip_invoice_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -448,7 +449,7 @@ LOCK TABLES `ip_invoice_groups` WRITE;
 INSERT INTO `ip_invoice_groups` VALUES
 (3,'Invoice Default','{{{id}}}',2,0),
 (4,'Quote Default','QUO{{{id}}}',1,0),
-(5,'Factura','SERI-{{{id}}}',3,5);
+(5,'Factura','SERI-{{{id}}}',4,5);
 /*!40000 ALTER TABLE `ip_invoice_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,7 +469,7 @@ CREATE TABLE `ip_invoice_item_amounts` (
   `item_total` decimal(20,2) DEFAULT NULL,
   PRIMARY KEY (`item_amount_id`),
   KEY `item_id` (`item_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -572,7 +573,8 @@ INSERT INTO `ip_invoice_item_amounts` VALUES
 (92,718,10080.00,0.00,0.00,10080.00),
 (93,719,10560.00,0.00,0.00,10560.00),
 (94,720,3840.00,0.00,0.00,3840.00),
-(95,722,2300.00,483.00,0.00,2783.00);
+(95,722,2300.00,483.00,0.00,2783.00),
+(96,726,2300.00,483.00,0.00,2783.00);
 /*!40000 ALTER TABLE `ip_invoice_item_amounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,7 +604,7 @@ CREATE TABLE `ip_invoice_items` (
   `item_date` date DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `invoice_id` (`invoice_id`,`item_tax_rate_id`,`item_date_added`,`item_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=726 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=727 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -706,7 +708,8 @@ INSERT INTO `ip_invoice_items` VALUES
 (722,500,14,NULL,'2025-09-11',NULL,'Cooper y Multiasistencia','Desarrollo en el script para adaptar allergodil.cz a MySQL, configuración de DNS en Route53, estimaciones de desarollo sobre Bolt, desarrollo e implementación de pipelines CI/CD con Jenkins, paso de pipelines a Jenkins Configuration as code, configuración de docker-compose y resolución de problemas técnicos en docker-compose, introducción de SonarQube en la docker network, documentación de arquitectura.\n\nCantidad y precio según lo acordado en el contrato fechado en Madrid a 31 de julio, con nombre de archivo en el envío por email que empieza por 20250722-ContratoServicios-Proveedor-RobotInnocent.',92.00,25.00,NULL,1,NULL,NULL,NULL,NULL),
 (723,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',3.00,750.00,NULL,1,NULL,NULL,NULL,NULL),
 (724,501,14,NULL,'2025-09-11',NULL,'Servicios de desarrollo web','Servicios de desarrollo web para la comunicación del proyecto ESS EN TRANSICIÓN en el marco del PLAN INTEGRAL DE IMPULSO A LA ECONOMÍA SOCIAL 2025',1.00,150.00,NULL,2,NULL,NULL,NULL,NULL),
-(725,502,14,NULL,'2025-09-30',NULL,'Consultoria i desenvolupament informàtic','Serveis de consultoria i desenvolupament informàtic per al Projecte Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPeríode: del 9 al 30 de setembre de 2025 (ambdós inclosos).\n\n\nS\'han exclòs del càlcul d\'hores els festius oficials de Barcelona ocorreguts durant el període: la Diada Nacional de Catalunya (11 de setembre) i la Mare de Déu de la Mercè (24 de setembre).',105.00,45.00,NULL,1,NULL,NULL,NULL,NULL);
+(725,502,14,NULL,'2025-09-30',NULL,'Consultoria i desenvolupament informàtic','Serveis de consultoria i desenvolupament informàtic per al Projecte Foment de l\'ús del català en els àmbits de l\'educació, en el lleure, i activitats complementàries a la ciutat de Barcelona.\n\nPeríode: del 9 al 30 de setembre de 2025 (ambdós inclosos).\n\n\nS\'han exclòs del càlcul d\'hores els festius oficials de Barcelona ocorreguts durant el període: la Diada Nacional de Catalunya (11 de setembre) i la Mare de Déu de la Mercè (24 de setembre).',105.00,45.00,NULL,1,NULL,NULL,NULL,NULL),
+(726,503,14,NULL,'2025-10-02',NULL,'Cooper y Multiasistencia','Desarrollo en el script para adaptar allergodil.cz a MySQL, configuración de DNS en Route53, estimaciones de desarollo sobre Bolt, desarrollo e implementación de pipelines CI/CD con Jenkins, paso de pipelines a Jenkins Configuration as code, configuración de docker-compose y resolución de problemas técnicos en docker-compose, introducción de SonarQube en la docker network, documentación de arquitectura.\n\nCantidad y precio según lo acordado en el contrato fechado en Madrid a 31 de julio, con nombre de archivo en el envío por email que empieza por 20250722-ContratoServicios-Proveedor-RobotInnocent.',92.00,25.00,NULL,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `ip_invoice_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -828,7 +831,7 @@ CREATE TABLE `ip_invoices` (
   UNIQUE KEY `invoice_url_key` (`invoice_url_key`),
   KEY `user_id` (`user_id`,`client_id`,`invoice_group_id`,`invoice_date_created`,`invoice_date_due`,`invoice_number`),
   KEY `invoice_status_id` (`invoice_status_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=503 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -903,7 +906,8 @@ INSERT INTO `ip_invoices` VALUES
 (499,1,100,5,2,NULL,'','2025-08-07','21:25:03','2025-08-07 21:44:06','2025-08-22','SERI-00001',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC 	BBVA:SM\nISIN Code 	ES0113211835\nSWIFT Code 	BBVAESMMXXX\nGIIN Number 	8DGQ38.00000.LE.724 \nLEI Code 	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','BUXFsAp9RQa1fmbnEGzLSeig6DCjv2l5',0,NULL),
 (500,1,100,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:20:59','2025-09-26','SERI-00002',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey002ABCDEFGH123456789012',0,NULL),
 (501,1,97,5,2,NULL,NULL,'2025-09-11','00:00:00','2025-10-01 12:22:05','2025-09-26','SERI-00003',NULL,NULL,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\n\nIBAN number: ES1601821005380201676646\n\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC	BBVA:SM\nISIN Code	ES0113211835\nSWIFT Code	BBVAESMMXXX\nGIIN Number	8DGQ38.00000.LE.724\nLEI Code	K8MS7FD7N5Z2WQ51AZ71\n\nAl contado o por transferencia al IBAN: ES1601821005380201676646\n\nMuchas gracias por la confianza','uniquekey003ABCDEFGH123456789013',0,NULL),
-(502,1,92,5,3,NULL,'','2025-09-30','00:00:00','2025-10-01 15:23:18','2025-10-16','SERI-00004',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\nIBAN number: ES1601821005380201676646\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC BBVA:SM\nISIN Code ES0113211835\nSWIFT Code BBVAESMMXXX\nGIIN Number 8DGQ38.00000.LE.724\nLEI Code K8MS7FD7N5Z2WQ51AZ71\nThank you for your business. \nAl contado o por transferencia al IBAN: ES1601821005380201676646\nMuchas gracias por la confianza','uniquekey004ABCDEFGH123456789014',0,NULL);
+(502,1,92,5,3,NULL,'','2025-09-30','00:00:00','2025-10-01 15:23:18','2025-10-16','SERI-00004',0.00,0.00,'Al comptat per ingrés o transferència:\nBanc: BBVA\nNúmero de compte en format IBAN: ES1601821005380201676646\nMoltes gràcies per la seva confiança.\nIBAN number: ES1601821005380201676646\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\nBloomberg Code or RIC BBVA:SM\nISIN Code ES0113211835\nSWIFT Code BBVAESMMXXX\nGIIN Number 8DGQ38.00000.LE.724\nLEI Code K8MS7FD7N5Z2WQ51AZ71\nThank you for your business. \nAl contado o por transferencia al IBAN: ES1601821005380201676646\nMuchas gracias por la confianza','uniquekey004ABCDEFGH123456789014',0,NULL),
+(503,1,100,5,1,NULL,'','2025-10-02','18:04:41','2025-10-02 18:04:45','2025-10-17','SERI-00003',NULL,NULL,'Al comptat per ingrés o transferència:\r\nBanc: BBVA\r\nNúmero de compte en format IBAN: ES1601821005380201676646\r\nMoltes gràcies per la seva confiança.\r\n\r\nIBAN number: ES1601821005380201676646\r\n\r\nBank full legal name: Banco Bilbao Vizcaya Argentaria, S.A (BBVA)\r\nHeadquarters: Plaza de San Nicolás, 4, 48005. Bilbo (Bizkaia).\r\nBloomberg Code or RIC 	BBVA:SM\r\nISIN Code 	ES0113211835\r\nSWIFT Code 	BBVAESMMXXX\r\nGIIN Number 	8DGQ38.00000.LE.724 \r\nLEI Code 	K8MS7FD7N5Z2WQ51AZ71\r\n\r\nAl contado o por transferencia al IBAN: ES1601821005380201676646\r\n\r\nMuchas gracias por la confianza','9fyY37Xk5xIDZ8jc4sBq02pPohVOmv1r',0,NULL);
 /*!40000 ALTER TABLE `ip_invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1777,4 +1781,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-02 17:43:06
+-- Dump completed on 2025-10-02 18:05:10
