@@ -126,7 +126,7 @@ INSERT INTO `ip_clients` VALUES
 (91,'1970-01-01 00:00:00','1970-01-01 00:00:00','Fiverr International Ltd','8 Eliezar Kaplan st.','VAT: 558327284','Tel Aviv','','6473409','','',NULL,NULL,'','','558327284','558327284','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (92,'7993-08-07 17:32:53','2025-10-01 15:02:48','Institut d\'Estudis Catalans','carrer del Carme, 47','Carrer del Carme, 47 - VAT: G08674327','Barcelona','Barcelona','08001','España','','',NULL,'gerencia@iec.cat','https://www.iec.cat','G08674327','G08674327','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (93,'1970-01-01 00:00:00','1970-01-01 00:00:00','KRESCO GROWTH S.L.','Carrer ANTONIO RICARDOS, 1, 4o 1a','VAT: B19340934','Barcelona','Barcelona','08027','Spain','',NULL,NULL,'','','B19340934','B19340934','system',1,NULL,NULL,NULL,NULL,NULL,0),
-(94,'1970-01-01 00:00:00','1970-01-01 00:00:00','Arnau Julià Collados','C/Mallorca 540 6e 1a','','Barcelona','Barcelona','08026','Spain','',NULL,NULL,'','','','43568534W','system',1,NULL,NULL,NULL,NULL,NULL,0),
+(94,'1970-01-01 00:00:00','1970-01-01 00:00:00','Arnau Julià Collados','C/Mallorca 540 6e 1a','','Barcelona','Barcelona','08026','Spain','',NULL,NULL,'','','43568534W',NULL,'system',1,NULL,NULL,NULL,NULL,NULL,0),
 (95,'1970-01-01 00:00:00','1970-01-01 00:00:00','AulaDrupal, S.L.','Rúa Do Campo, nº 23, 1º C','VAT: B06971048','Sigueiro - Oroso','A Coruña','15888','Spain','',NULL,NULL,'','','B06971048','B06971048','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (96,'6320-08-07 17:19:48','1970-01-01 00:00:00','Vianet Limited','2, Liesel Court Mimosa Street','VAT: MT19744135','Pieta','','','','',NULL,NULL,'','','MT19744135','MT19744135','system',1,NULL,NULL,NULL,NULL,NULL,0),
 (97,'1970-01-01 00:00:00','2025-10-01 12:46:40','Crític SCCL','Casp 43, baixos.','08010 Barcelona - VAT: F66334806','Barcelona','Catalonia','08010','Spain','',NULL,NULL,'','','F66334806','F66334806','system',1,NULL,NULL,NULL,NULL,NULL,0),
@@ -1777,4 +1777,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-02 16:53:24
+-- Dump completed on 2025-10-02 16:54:26
